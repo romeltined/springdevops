@@ -21,7 +21,7 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub-pwd')]) {
-                   sh 'sudo docker login -u romeltined -p ${dockerhub-pwd}'
+                   sh 'docker login -u romeltined -p ${dockerhub-pwd}'
                     }
                     sh 'docker push romeltined/springdevops'
                 }
