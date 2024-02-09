@@ -20,8 +20,8 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhub-pwd')]) {
-                    sh 'docker login -u romeltined -p ${dockerhub-pwd}'
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-pswd', passwordVariable: 'dockerhub-p', usernameVariable: 'dockerhub-u')]) {
+                    sh 'docker login -u ${dockerhub-u} -p ${dockerhub-p}'
                     }
                     sh 'docker push romeltined/springdevops'
                 }
