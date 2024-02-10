@@ -23,7 +23,7 @@ pipeline {
                    withCredentials([usernamePassword(credentialsId: 'mydockerhub-pwd', passwordVariable: 'docker-p', usernameVariable: 'docker-u')])  {
                    sh 'docker login -u romeltined -p dckr_pat_n8NwWQE2w383T_Xs0H-beFq8fYg'
                     }
-                    sh 'docker push romeltined/springdevops'
+                    sh 'docker push /springdevops'
                 }
             }
         }
