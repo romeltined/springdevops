@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t /springdevops .'
+                    sh 'docker build -t romeltined2/springdevops .'
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
                    withCredentials([usernamePassword(credentialsId: 'mydockerhub-pwd', passwordVariable: 'docker-p', usernameVariable: 'docker-u')])  {
                    sh 'docker login -u romeltined -p dckr_pat_n8NwWQE2w383T_Xs0H-beFq8fYg'
                     }
-                    sh 'docker push /springdevops'
+                    sh 'docker push romeltined2/springdevops'
                 }
             }
         }
