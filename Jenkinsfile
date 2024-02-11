@@ -21,9 +21,13 @@ pipeline {
             steps{
                 script{
                    withCredentials([usernamePassword(credentialsId: 'mydockerhub-pwd', passwordVariable: 'docker-p', usernameVariable: 'docker-u')])  {
-                   sh 'docker login -u romeltined -p dckr_pat_n8NwWQE2w383T_Xs0H-beFq8fYg'
+                       def registry_url = "registry.hub.docker.com/"
+                       sh 'docker login -u romeltined -p dckr_pat_n8NwWQE2w383T_Xs0H-beFq8fYg'
                     }
-                    sh 'docker push romeltined2/springdevops'
+                    docker.withRegistry("http://${registry_url}", "mydockerhub-pwd") {
+                        // Push your image now
+                        sh 'docker push romeltined2/springdevops'
+                    }
                 }
             }
         }
