@@ -8,6 +8,8 @@ class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//assert outuot - "Greeting,..."  = HelloController.index();
+		
 	}
 
 }
